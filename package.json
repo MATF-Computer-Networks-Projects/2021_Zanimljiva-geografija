@@ -1,0 +1,19 @@
+{
+    "name": "2021_zanimljiva-geografija",
+    "version": "1.0.0",
+    "description": "Project for Computer Networks course",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MATF-Computer-Networks-Projects/2021_Zanimljiva-geografija.git"
+    },
+    "author": "Ana Milicevic, Milos Kutlešić, Stevan Dragović",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MATF-Computer-Networks-Projects/2021_Zanimljiva-geografija/issues"
+    },
+    "homepage": "https://github.com/MATF-Computer-Networks-Projects/2021_Zanimljiva-geografija#readme"
+}
