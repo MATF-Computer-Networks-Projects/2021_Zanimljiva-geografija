@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Zanimljiva geografija | Prijava </title>
+</head>
+
+<body>
+    <main>
+        <header>Zanimljiva geografija</header>
+        <form action="game" method="get">
+
+            <div class="form-group">
+                <div class="form-group">
+                    <div>
+                        Prijavi se
+                    </div>
+                    <input type="text" id="username" name="username" placeholder="Username" autocomplete=off/>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" />
+                </div>
+                <div>
+                    <button type="button" id="log" class="btn btn-outline-success btn-lg">Uloguj se</button>
+                </div>
+                <div>
+                    Nemaš nalog?
+                    <button type="button" id="register" class="btn btn-outline-success btn-lg">Registruj se</button>
+                </div>
+        </form>
+    </main>
+
+
+</body>
+
+
+</html>
