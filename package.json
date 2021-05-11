@@ -13,6 +13,7 @@
     "deamon": "^1.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "mongoose": "^5.12.8",
     "socket.io": "^4.0.1",
     "socket.io-client": "^4.0.1"
   }
