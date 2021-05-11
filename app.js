@@ -7,6 +7,14 @@ const roomRoutes = require('./routes/room');
 const signupRoutes = require('./routes/signup');
 const lobbyRoutes= require('./routes/lobby');
 
+const User = require('./models/user');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/login-app-db', {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true
+})
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

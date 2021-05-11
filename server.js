@@ -4,6 +4,9 @@ let socketio = require('socket.io');
 const Room = require('./models/room');
 const Player = require('./models/player');
 
+const User = require('./models/user');
+const mongoose = require('mongoose');
+
 const port = 3000;
 
 const app = require('./app');
