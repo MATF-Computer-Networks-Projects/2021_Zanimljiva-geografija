@@ -8,12 +8,12 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk';
 mongoose.connect('mongodb://localhost:27017/login-app-db', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useCreateIndex: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
 })
 router.get('/', function(req, res, next) {
-    res.render('signup.ejs',{});
+    res.render('signup.ejs', {});
 
 });
 

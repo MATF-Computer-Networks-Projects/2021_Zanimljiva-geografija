@@ -16,4 +16,6 @@ const { disconnect } = require('process');
 
 const server = http.createServer(app);
 
+server.listen(port);
+
 const io = socketio(server);

@@ -1,0 +1,105 @@
+main {
+    max-width: 500px;
+    background-color: darkgreen;
+    padding: 2%;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.main1 {
+    padding-top: 0px !important;
+    margin-top: 30px !important;
+    max-width: 2000px;
+    background-color: darkgreen;
+    padding: 2%;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.column1 {
+    float: left;
+    width: 65%;
+    padding: 10px;
+}
+
+.column2 {
+    float: left;
+    width: 35%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+button#send0,
+button#send1,
+button#send3,
+button#send2 {
+    text-align: center !important;
+    position: relative !important;
+    left: 128px !important;
+}
+
+div#posalji {
+    position: relative !important;
+    text-align: center;
+    left: -300px !important;
+}
+
+h1#slovo {
+    position: relative !important;
+    float: right !important;
+    padding-left: 250px !important;
+    margin-left: 250px !important;
+}
+
+body {
+    background-color: darkslategray;
+    color: floralwhite;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table {
+    width: 350px;
+}
+
+tr,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.player1 {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 10px;
+    padding-right: 0px !important;
+    padding: 20px;
+}
+
+.player2 {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 10px;
+    padding-right: 0px !important;
+    padding: 20px;
+}
+
+.player3 {
+    margin-bottom: auto;
+    margin-left: 10px;
+    padding-left: 0px !important;
+    padding: 20px;
+}
+
+.player4 {
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: 10px;
+    padding-left: 0px !important;
+    padding: 20px;
+}
