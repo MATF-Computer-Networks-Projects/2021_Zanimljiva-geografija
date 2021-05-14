@@ -53,6 +53,45 @@ var SocRooms = io.of("/room");
 var SocSignup = io.of("/signup");
 var SocLobby=io.of("/lobby");
 
+//prijem konekcija prilikom konektovanja u /lobby
+SocLobby.on('connection',socket=>{
+    //proveravanje da li je soba trenutna puna, zbog funkcionalsti pridruzi se nasumicnoj sobi
+    cur_tmp = cur_room;
+    if(rooms[cur_room].isFull()){
+            cur_tmp++;
+    }
+    socket.emit('welcomeTolobby',cur_tmp);
+})
+
+
+//prijem konekcija na /signup koja ce emitovati da registracija zapocne
+SocSignup.on('connection' , socket => {
+    socket.emit('register');
+});
+//prijem konekcije na /login poruka u konzoli i provera da li je korisnik vec u listi liveplayers ondosno da li je vec seo u sobu
+SocLogins.on('connection', socket => {
+    socket.emit('login');
+    console.log('Logovanje');
+    found=0;
+    allow = 1;
+    socket.on('logTry',(username) => {
+        var username1 = JSON.stringify(username);
+        liveplayers.forEach(el => {
+            if(el == username1){
+                console.log(`Postoji covek`)
+                allow =0;  
+            }
+
+        })
+        
+        socket.emit("allowance",allow);
+        
+
+    })
+    
+});
+
+
 
 
 
