@@ -28,6 +28,59 @@
         </form>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js" integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ==" crossorigin="anonymous"></script>
+<script>
+    const socket = io("http://localhost:3000/login");
+
+    socket.on('login',() => {
+
+        const but1 = document.getElementById("log");
+
+        but1.addEventListener('click',login);
+
+        async function login(){
+
+                event.preventDefault()
+
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+                console.log(`${username} ${password}`)
+                const result = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({username , password})
+                }).then((res) => res.json())
+
+                if (result.status === 'ok') {
+                    console.log('Got the token: ', result.data)
+                    localStorage.setItem('token', result.data)
+                    //alert('Bravo mala')
+                    socket.emit('logTry',username);
+                    socket.on('allowance',(indik) => {
+                        console.log(indik);
+                        if(indik === 1){
+                            location.href = "http://localhost:3000/lobby/?username="+`${username}`;
+                            //console.log('Odoh u lobi');
+                        }
+                        else{
+                            alert('Vec si u sobi druze');
+                            location.reload();
+                    }});
+                    
+                }else{
+                    alert(result.error)
+                }
+            }
+
+        const but3=document.getElementById("register");
+        but3.addEventListener('click',()=>{
+            location.href="http://localhost:3000/signup";
+            console.log('Dosao sam da se registrujem');
+        });
+
+    });
+    </script>
 </body>
 
 
