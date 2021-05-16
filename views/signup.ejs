@@ -18,61 +18,62 @@
 
             <div class="form-group">
                 <div class="form-group">
-                    
+
                     <input type="text" id="username" name="username" placeholder="Username" autocomplete=off/>
                 </div>
                 <div>
-                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off"/>   
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" />
                 </div>
                 <div>
-                    <button type="button" id="submit"class="btn btn-outline-success btn-lg">Submit</button>
-                    </div>
+                    <button type="button" id="submit" class="btn btn-outline-success btn-lg">Submit</button>
+                </div>
         </form>
     </main>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js" integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ==" crossorigin="anonymous"></script>
     <script>
-         const socket= io("http://localhost:3000/signup");
+        const socket = io("http://localhost:3000/signup");
 
-socket.on('register',()=>{
+        socket.on('register', () => {
 
-    const username = document.getElementById("username").value;
-    const btn = document.getElementById("submit");
+            const username = document.getElementById("username").value;
+            const btn = document.getElementById("submit");
 
-    btn.addEventListener('click',registerUser)
-    
-    async function registerUser(event) {
-        
-        event.preventDefault()
-        const username = document.getElementById('username').value
-        const password = document.getElementById('password').value
-        console.log(`${username} ${password}`)
-        if(username.value === ""){
-            alert('Morate imati username');
-        }
-        else{
-            const result = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({username , password})
-                
-            }).then((res) => res.json())
+            btn.addEventListener('click', registerUser)
 
-            if (result.status === 'ok') {
-                alert('Success')
-                location.href = "http://localhost:3000/login/";
-                console.log('Izvrsena uspesna registracija'); 
-            } else {
-                alert(result.error)
-            }  
-    
-        }
-    }
-})
-       
+            async function registerUser(event) {
 
+                //reci GAMIJU
+                event.preventDefault()
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+                console.log(`${username} ${password}`)
+                if (username.value === "") {
+                    alert('Morate imati username');
+                } else {
+                    const result = await fetch('/api/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username,
+                            password
+                        })
+
+                    }).then((res) => res.json())
+
+                    if (result.status === 'ok') {
+                        alert('Success')
+                        location.href = "http://localhost:3000/login/";
+                        console.log('Izvrsena uspesna registracija');
+                    } else {
+                        alert(result.error)
+                    }
+
+                }
+            }
+        })
     </script>
 </body>
 

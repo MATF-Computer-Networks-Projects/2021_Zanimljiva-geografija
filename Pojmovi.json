@@ -1,0 +1,583 @@
+{
+    "A": {
+        "Drzava": [
+            "Australija",
+            "Afganistan",
+            "Albanija",
+            "Andora",
+            "Azerbej"
+        ],
+        "Grad": [
+            "Atina",
+            "Akra",
+            "Amsterdam",
+            "Aleksinac",
+            "Astana"
+        ],
+        "Reka": [
+            "Amazon",
+            "Angara",
+            "Araks",
+            "Avon"
+        ],
+        "Planina": [
+            "Avala",
+            "Akonkagva",
+            "Atos",
+            "Ararat"
+        ]
+    },
+    "B": {
+        "Drzava": [
+            "Bugarska",
+            "Benin"
+        ],
+        "Grad": [
+            "Bar",
+            "Beograd",
+            "Baku",
+            "Bangkok",
+            "Bejrut",
+            "Bor"
+        ],
+        "Reka": [
+            "Bosna",
+            "Begej",
+            "Bosut",
+            "Brzava"
+        ],
+        "Planina": [
+            "Bjelasica",
+            "Bukovik",
+            "Bukulja",
+            "Boranja"
+        ]
+    },
+    "V": {
+        "Drzava": [
+            "Vatikan",
+            "Vijetnam",
+            "Venezuela"
+        ],
+        "Grad": [
+            "Valeta",
+            "Valjevo",
+            "Varšava"
+        ],
+        "Reka": [
+            "Volga",
+            "Veternica",
+            "Visla"
+        ],
+        "Planina": [
+            "Vitorog",
+            "Vlašić",
+            "Vodno"
+        ]
+    },
+    "G": {
+        "Drzava": [
+            "Gabon",
+            "Gambija",
+            "Gana",
+            "Gibraltar",
+            "Grčka",
+            "Grenada",
+            "Grenland",
+            "Gruzija",
+            "Gvatemala",
+            "Gvajana",
+            "Gvineja",
+            "Gvineja Bisao"
+        ],
+        "Grad": [
+            "Gabala",
+            "Grozni",
+            "Gnjilane"
+        ],
+        "Reka": [
+            "Grza",
+            "Glina",
+            "Gang"
+        ],
+        "Planina": [
+            "Goč",
+            "Golak",
+            "Grmeč"
+        ]
+    },
+    "D": {
+        "Drzava": [
+            "Danska",
+            "Dominika",
+            "Dominikanska Republika"
+        ],
+        "Grad": [
+            "Dubrovnik",
+            "Doboj",
+            "Daka",
+            "Dablin"
+        ],
+        "Reka": [
+            "Dunav",
+            "Drina",
+            "Drava",
+            "Dadu"
+        ],
+        "Planina": [
+            "Dinara",
+            "Durmitor",
+            "Dukat",
+            "Dimitor"
+        ]
+    },
+    "E": {
+        "Drzava": [
+            "Ekvador",
+            "Egipat",
+            "Ekvatorijalna Gvineja",
+            "Eritreja",
+            "Estonija",
+            "Etiopija"
+        ],
+        "Grad": [
+            "Elbasan",
+            "Erbil",
+            "Edinburg"
+        ],
+        "Reka": [
+            "Ebro",
+            "Erenik",
+            "Eurota",
+            "Evel"
+        ],
+        "Planina": [
+            "Elgon"
+        ]
+    },
+    "Z": {
+        "Drzava": [
+            "Zimbabve",
+            "Zambija"
+        ],
+        "Grad": [
+            "Zadar",
+            "Zagreb",
+            "Zrenjanin"
+        ],
+        "Reka": [
+            "Zlatica",
+            "Zambezi",
+            "Zeta"
+        ],
+        "Planina": [
+            "Zlatibor",
+            "Zlatar",
+            "Zelengora"
+        ]
+    },
+    "I": {
+        "Drzava": [
+            "Irska",
+            "Irak",
+            "Italija"
+        ],
+        "Grad": [
+            "Inđija",
+            "Ipsvič",
+            "Islamabad"
+        ],
+        "Reka": [
+            "Ind",
+            "Ibar",
+            "Ilova"
+        ],
+        "Planina": [
+            "Ida",
+            "Ivanščica",
+            "Igman"
+        ]
+    },
+    "J": {
+        "Drzava": [
+            "Japan",
+            "Jermenija",
+            "Jamajka"
+        ],
+        "Grad": [
+            "Jerusalim",
+            "Jagodina",
+            "Jerevan"
+        ],
+        "Reka": [
+            "Jadro",
+            "Jadar",
+            "Jordan"
+        ],
+        "Planina": [
+            "Jelica",
+            "Jagodnja",
+            "Jastrebac"
+        ]
+    },
+    "K": {
+        "Drzava": [
+            "Kenija",
+            "Kongo",
+            "Katar",
+            "Kina"
+        ],
+        "Grad": [
+            "Kairo",
+            "Koprivnica",
+            "Kraljevo",
+            "Kragujevac"
+        ],
+        "Reka": [
+            "Krupa",
+            "Krka",
+            "Kolubara"
+        ],
+        "Planina": [
+            "Kopaonik",
+            "Kozara",
+            "Kukavica"
+        ]
+    },
+    "L": {
+        "Drzava": [
+            "Libija",
+            "Lesoto",
+            "Luksemburg",
+            "Lihtenštajn",
+            "Laos"
+        ],
+        "Grad": [
+            "London",
+            "Lisabon",
+            "Leskovac"
+        ],
+        "Reka": [
+            "Lika",
+            "Lonja",
+            "Lim"
+        ],
+        "Planina": [
+            "Leotar",
+            "Lovćen",
+            "Lučevik"
+        ]
+    },
+    "M": {
+        "Drzava": [
+            "Mongolija",
+            "Moldavija",
+            "Mjanmar",
+            "Meksiko",
+            "Maroko",
+            "Malezija",
+            "Mađarska"
+        ],
+        "Grad": [
+            "Maputo",
+            "Metković",
+            "Mostar",
+            "Mladenovac"
+        ],
+        "Reka": [
+            "Misisipi",
+            "Morača",
+            "Mlava",
+            "Morava"
+        ],
+        "Planina": [
+            "Maljen",
+            "Mučanj",
+            "Maglić"
+        ]
+    },
+    "N": {
+        "Drzava": [
+            "Nemačka",
+            "Niger",
+            "Nikaragva",
+            "Nigerija",
+            "Norveška"
+        ],
+        "Grad": [
+            "Najrobi",
+            "Niš",
+            "Nasau"
+        ],
+        "Reka": [
+            "Nerodinka",
+            "Nadiža",
+            "Neretva"
+        ],
+        "Planina": [
+            "Nanos",
+            "Nidže",
+            "Ninaja"
+        ]
+    },
+    "O": {
+        "Drzava": [
+            "Oman",
+            "Obala Slonovače"
+        ],
+        "Grad": [
+            "Otava",
+            "Oslo",
+            "Obrenovac"
+        ],
+        "Reka": [
+            "Odra",
+            "Orinoko",
+            "Ob"
+        ],
+        "Planina": [
+            "Ozren",
+            "Olimp",
+            "Orjen"
+        ]
+    },
+    "P": {
+        "Drzava": [
+            "Panama",
+            "Pakistan",
+            "Paragvaj",
+            "Poljska",
+            "Peru",
+            "Portugal"
+        ],
+        "Grad": [
+            "Pančevo",
+            "Prokuplje",
+            "Paraćin",
+            "Pariz"
+        ],
+        "Reka": [
+            "Plitvica",
+            "Pčinja",
+            "Pek"
+        ],
+        "Planina": [
+            "Povlen",
+            "Paštrik",
+            "Pobijenik"
+        ]
+    },
+    "R": {
+        "Drzava": [
+            "Rusija",
+            "Rumunija",
+            "Ruanda"
+        ],
+        "Grad": [
+            "Ruma",
+            "Riga",
+            "Rijeka"
+        ],
+        "Reka": [
+            "Radika",
+            "Rajna",
+            "Rzav"
+        ],
+        "Planina": [
+            "Rogozna",
+            "Radan",
+            "Rujen"
+        ]
+    },
+    "S": {
+        "Drzava": [
+            "Sejšeli",
+            "Singapur",
+            "Slovačka",
+            "Slovenija",
+            "Svaziland",
+            "Samoa"
+        ],
+        "Grad": [
+            "Sarajevo",
+            "Sisak",
+            "Sombor"
+        ],
+        "Reka": [
+            "Sitnica",
+            "Sava",
+            "Studva"
+        ],
+        "Planina": [
+            "Suva planina",
+            "Seličevica",
+            "Stolovi"
+        ]
+    },
+    "T": {
+        "Drzava": [
+            "Tajland",
+            "Turska",
+            "Togo",
+            "Tadžikistan"
+        ],
+        "Grad": [
+            "Tokio",
+            "Tirana",
+            "Tripoli",
+            "Trstenik",
+            "Temisvar"
+        ],
+        "Reka": [
+            "Tamiš",
+            "Temza",
+            "Tigar"
+        ],
+        "Planina": [
+            "Tavor",
+            "Tara",
+            "Tupižnica"
+        ]
+    },
+    "U": {
+        "Drzava": [
+            "Ukrajina",
+            "Urugvaj",
+            "Uganda",
+            "Uzbekistan"
+        ],
+        "Grad": [
+            "UlanconvertUTF82Char: error1 BA!tor",
+            "Užice"
+        ],
+        "Reka": [
+            "Una",
+            "Ub",
+            "Uvac"
+        ],
+        "Planina": [
+            "Uzlomac",
+            "Učka"
+        ]
+    },
+    "F": {
+        "Drzava": [
+            "Folklandska ostrva",
+            "Farska ostrva",
+            "Fidži",
+            "Filipini",
+            "Finska",
+            "Francuska"
+        ],
+        "Grad": [
+            "Fatima",
+            "Foča",
+            "Firenca"
+        ],
+        "Reka": [
+            "Fojnička reka",
+            "Fulda",
+            "Fekete Kereš"
+        ],
+        "Planina": [
+            "Fruška gora",
+            "Fudži"
+        ]
+    },
+    "H": {
+        "Drzava": [
+            "Haiti",
+            "Honduras",
+            "Holandija",
+            "Hrvatska"
+        ],
+        "Grad": [
+            "Hamburg",
+            "Hag",
+            "Homs"
+        ],
+        "Reka": [
+            "Hadson",
+            "Huang Ho",
+            "Hornad"
+        ],
+        "Planina": [
+            "Hajla",
+            "Hum",
+            "Hrgud"
+        ]
+    },
+    "C": {
+        "Drzava": [
+            "Australija",
+            "Afganistan",
+            "Albanija",
+            "Andora",
+            "Alžir",
+            "Azerbejdžan"
+        ],
+        "Grad": [
+            "Cirih",
+            "Cetinje",
+            "Celje"
+        ],
+        "Reka": [
+            "Crnica",
+            "Cetina",
+            "Cernica"
+        ],
+        "Planina": [
+            "Cer",
+            "Crni vrh",
+            "Crvanj",
+            "Cincar"
+        ]
+    },
+    "Č": {
+        "Drzava": [
+            "Čad",
+            "Češka",
+            "Čile"
+        ],
+        "Grad": [
+            "Čačak",
+            "Čikago",
+            "Černobilj"
+        ],
+        "Reka": [
+            "Čikola",
+            "Čemernica",
+            "Čokordin",
+            "Čabranka"
+        ],
+        "Planina": [
+            "Čemernica",
+            "Čemerno",
+            "Čičavica",
+            "Čakor"
+        ]
+    },
+    "Š": {
+        "Drzava": [
+            "Švedska",
+            "Španija",
+            "Švajcarska",
+            "Šri Lanka"
+        ],
+        "Grad": [
+            "Šid",
+            "Šabac",
+            "Šangaj"
+        ],
+        "Reka": [
+            "Špreja",
+            "Šujica",
+            "Šelda"
+        ],
+        "Planina": [
+            "Šomrda",
+            "Šator",
+            "Šar-planina"
+        ]
+    }
+}

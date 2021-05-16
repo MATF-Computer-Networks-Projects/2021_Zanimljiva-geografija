@@ -8,36 +8,44 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <title>Lobby </title>
+    <title>Zanimljiva geografija | Prijava </title>
 </head>
 
 <body>
     <main>
-        <header>Lobby</header>
+        <header>Zanimljiva geografija</header>
         <form action="game" method="get">
 
             <div class="form-group">
                 <div class="form-group">
-                    <p id="here"></p>
                     <div>
-                        <button type="button" id="rand" class="btn btn-outline-success btn-lg">Pridruži se nasumicnoj igri</button>
+                        Prijavi se
                     </div>
-                    <div>
-                        <button type="button" id="search" class="btn btn-outline-success btn-lg">Pretrazi sobe</button>
-                    </div>
+                    <input type="text" id="username" name="username" placeholder="Username" autocomplete=off/>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" />
+                </div>
+                <div>
+                    <button type="button" id="log" class="btn btn-outline-success btn-lg">Uloguj se</button>
+                </div>
+                <div>
+                    Nemaš nalog?
+                    <button type="button" id="register" class="btn btn-outline-success btn-lg">Registruj se</button>
+                </div>
         </form>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js" integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ==" crossorigin="anonymous"></script>
-<script>
-    const socket = io("http://localhost:3000/login");
+    <script>
+        const socket = io("http://localhost:3000/login");
 
-    socket.on('login',() => {
+        socket.on('login', () => {
 
-        const but1 = document.getElementById("log");
+            const but1 = document.getElementById("log");
 
-        but1.addEventListener('click',login);
+            but1.addEventListener('click', login);
 
-        async function login(){
+            async function login() {
 
                 event.preventDefault()
 
@@ -49,37 +57,40 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({username , password})
+                    body: JSON.stringify({
+                        username,
+                        password
+                    })
                 }).then((res) => res.json())
 
                 if (result.status === 'ok') {
                     console.log('Got the token: ', result.data)
                     localStorage.setItem('token', result.data)
-                    //alert('Bravo mala')
-                    socket.emit('logTry',username);
-                    socket.on('allowance',(indik) => {
+                        //alert('Bravo mala')
+                    socket.emit('logTry', username);
+                    socket.on('allowance', (indik) => {
                         console.log(indik);
-                        if(indik === 1){
-                            location.href = "http://localhost:3000/lobby/?username="+`${username}`;
+                        if (indik === 1) {
+                            location.href = "http://localhost:3000/lobby/?username=" + `${username}`;
                             //console.log('Odoh u lobi');
-                        }
-                        else{
+                        } else {
                             alert('Vec si u sobi druze');
                             location.reload();
-                    }});
-                    
-                }else{
+                        }
+                    });
+
+                } else {
                     alert(result.error)
                 }
             }
 
-        const but3=document.getElementById("register");
-        but3.addEventListener('click',()=>{
-            location.href="http://localhost:3000/signup";
-            console.log('Dosao sam da se registrujem');
-        });
+            const but3 = document.getElementById("register");
+            but3.addEventListener('click', () => {
+                location.href = "http://localhost:3000/signup";
+                console.log('Dosao sam da se registrujem');
+            });
 
-    });
+        });
     </script>
 </body>
 

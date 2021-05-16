@@ -3,28 +3,33 @@ const express = require('express');
 let socketio = require('socket.io');
 const Room = require('./models/room');
 const Player = require('./models/player');
+
 const Timer = require('./models/timer');
+/*timer = new Timer1();
+const port = 3000;
+*/
 
 const User = require('./models/user');
-const mongoose = require('mongoose');
+
+const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const port = 3000;
 
 const app = require('./app');
 
+
 const { path } = require('./app');
 const { disconnect } = require('process');
-//pokretanje servera 
 
 const server = http.createServer(app);
-
-server.listen(port);
-
+let privateRooms = {};
 const io = socketio(server);
-//globalne promenljive koriscene u kodu 
+// indeks sledece sobe 
 let id = 0;
 let rooms = [];
-for(var k=0;k<50;k++){
+for (var k = 0; k < 50; k++) {
     rooms.push(null);
 }
 let room = new Room(0);
@@ -36,108 +41,195 @@ var brPoslatih = 0;
 var brZavrsenih = 0;
 let liveplayers = [];
 
-
-//ubacivanje json fajla za ispitivanje tacnosti odgovora
 const fs = require('fs');
 const { RSA_PKCS1_PADDING } = require('constants');
 const { parse } = require('path');
+const { waitForDebugger } = require('inspector');
 let data = fs.readFileSync('./Pojmovi.json');
 let geos = JSON.parse(data);
 
 var randomChar;
 
-//socket-promenljive koje regulisu slusanje odredjenih "namespace"-ova 
 var SocLogins = io.of("/login");
 var SocGames = io.of("/game");
 var SocRooms = io.of("/room");
 var SocSignup = io.of("/signup");
-var SocLobby=io.of("/lobby");
+var SocLobby = io.of("/lobby");
 
-//prijem konekcija prilikom konektovanja u /lobby
-SocLobby.on('connection',socket=>{
-    //proveravanje da li je soba trenutna puna, zbog funkcionalsti pridruzi se nasumicnoj sobi
+SocLobby.on('connection', socket => {
     cur_tmp = cur_room;
-    if(rooms[cur_room].isFull()){
-            cur_tmp++;
+    if (rooms[cur_room].isFull()) {
+        cur_tmp++;
     }
-    socket.emit('welcomeTolobby',cur_tmp);
+    socket.emit('welcomeTolobby', cur_tmp);
 })
 
-
-//prijem konekcija na /signup koja ce emitovati da registracija zapocne
-SocSignup.on('connection' , socket => {
+SocSignup.on('connection', socket => {
     socket.emit('register');
 });
-//prijem konekcije na /login poruka u konzoli i provera da li je korisnik vec u listi liveplayers ondosno da li je vec seo u sobu
+
 SocLogins.on('connection', socket => {
     socket.emit('login');
     console.log('Logovanje');
-    found=0;
+    found = 0;
     allow = 1;
-    socket.on('logTry',(username) => {
+    socket.on('logTry', (username) => {
         var username1 = JSON.stringify(username);
         liveplayers.forEach(el => {
-            if(el == username1){
+            if (el == username1) {
                 console.log(`Postoji covek`)
-                allow =0;  
+                allow = 0;
             }
 
         })
-        
-        socket.emit("allowance",allow);
-        
+
+        socket.emit("allowance", allow);
+
 
     })
-    
+
 });
-//konekcija socketa na /game
+
+SocRooms.on('connection', socket => {
+    console.log('neko je usao u listu soba');
+    socket.emit('room', rooms, cur_room);
+    socket.on('createRoom', () => {
+            //console.log(`${room.id} je puna , pravim novu sobu.`);
+            /*if(rooms[cur_room] === undefined){
+                console.log("Soba prazna")
+                rooms[cur_room] === new Room(cur_room);
+                
+
+            }else{
+                console.log("Soba nije prazna" + `${cur_room}`)
+                room = new Room(id);
+                rooms[id] = room;
+                cur_room++;
+                socket.emit('login', cur_room);
+                id++;
+                console.log(`Nova soba je ${room.id}`);
+                
+                
+        }*/
+            var i;
+            for (i = 0; i < rooms.length; i++) {
+                if (rooms[i] === null) {
+                    console.log(`Napravljena nova soba ${i}`);
+                    rooms[i] = new Room(i);
+
+                    break;
+                }
+            }
+
+            socket.emit('createdRoom', i);
+            io.of('/room').emit('updateRoom', rooms, -1);
+        }
+
+
+    )
+    socket.on('createPrivate', kod => {
+        if (privateRooms[kod] !== undefined) {
+            console.log('Ta soba vec postoji')
+            socket.emit('fobidCreatPrivat');
+        } else {
+            room = new Room(kod);
+            privateRooms[kod] = room;
+            console.log('Kreirana soba');
+            socket.emit('createdPrivate', JSON.stringify(kod));
+        }
+    });
+    socket.on('JoinPrivate', (kod) => {
+        var yes = 1;
+        console.log(`Ovo je sad test za kod${kod}`);
+        if (privateRooms[kod] === undefined) {
+            yes = 0
+        }
+        socket.emit('privateJoin', yes, kod);
+    });
+});
+
 SocGames.on('connection', socket => {
     console.log('Konekcija uspesna ');
 
 
-    //kada nas klijent obavesti o pridruzivanju u igru sa argumentima
-    socket.on('joinGame', (username,rumNum,private) => {
-        //provera vrednosti private
+
+
+    socket.on('disconnect', () => {
+
+        //console.log(`${socket.id} is leaving room ${room.roomName}`);
+        console.log(`leaving  ${room.id} `);
+        console.log(`${room.roomName}`);
+        var leaverid = room.findLeaver(socket.id);
+
+        if (leaverid !== -1) {
+            room.standUp(leaverid);
+            br = room.id * 10 + leaverid;
+            pl = liveplayers[br]
+            liveplayers[br] = "none";
+            io.of('/game')
+                .to(room.roomName).emit('DisconnectMessage', pl, "has left the game");
+        }
+        del_room = -1;
+
+        //brisanje igraca
+        //if(room.igraca === 0){
+        //  console.log(`Brisem sobu ${room.id}`);
+        //rooms[room.id] = undefined;
+        //del_room = room.id;
+        //
+        //}
+
+        socket.leave();
+        console.log(`${leaverid}`);
+        console.log(`${room}`);
+        if (leaverid !== -1) {
+            io.of('/game')
+                .to(room.roomName).emit('update', leaverid, 'none', room);
+        }
+
+        io.of('/room')
+            .emit('updateRoom', rooms, del_room);
+
+    });
+
+    socket.on('joinGame', (username, rumNum, private) => {
         console.log(`soba privatna ${private} `);
-        //parsiranje zbog JSON.strignfy
-        private = parseInt(private,10);
-        rumNum = parseInt(rumNum,10);
-        
+
+        private = parseInt(private, 10);
+
+        rumNum = parseInt(rumNum, 10);
+
         //deo za pravljenje sobe
-        //proveravanje da li se pravi privatna soba ili regularna naravno ukoliko takva ne postoji
-        //pri postojanju sobe ovi delovi ce biti preskoceni
-    
-        if(private === 0){
+
+
+        if (private === 0) {
             room = rooms[rumNum];
             if (room === null || room.isFull()) {
                 //console.log(`${room.id} je puna , pravim novu sobu.`);
-                    room = new Room(rumNum);
-                    rooms[rumNum] = room;
-                    cur_room = rumNum;
-                    //visak
-                    //socket.emit('login', cur_room);
-                    id++;
-                    console.log(`Nova soba je ${room.id}`);
-        }
+                room = new Room(rumNum);
+                rooms[rumNum] = room;
+                cur_room = rumNum;
+                //visak
+                //socket.emit('login', cur_room);
+                id++;
+                console.log(`Nova soba je ${room.id}`);
+            }
 
-    }
-        else{
+        } else {
             console.log('Ovde sam');
             room = privateRooms[rumNum];
-            if(room === undefined){
+            if (room === undefined) {
                 room = new Room(rumNum);
                 privateRooms[rumNum] = room;
                 console.log('Napravljena privatna soba');
-        }
-            if(room.isFull()){
+            }
+            if (room.isFull()) {
                 socket.emit('privateFull');
             }
         }
-        
-        console.log(`${room.roomName} ${room.igraca}`)
-        
 
-        //funckionalnost dodavanja igraca konkretnoj sobi i ispisivanje u konzoli potrebnih informacija
+        console.log(`${room.roomName} ${room.igraca}`)
+
         playerid = room.firstEmptyPlace();
         const player = new Player(socket.id, username, 0, playerid);
         console.log(`Prvo slobodno mesto u sobi je ${room.firstEmptyPlace()}`);
@@ -145,37 +237,43 @@ SocGames.on('connection', socket => {
         room.sitDown(player);
         console.log(`soba ima ${room.igraca} igraca`);
         console.log(`dodat je igrac ${player.username} sa id treda ${player.socketId} i povecan mu je id ${player.id} a id sobe mu je ${player.current_room}`);
-        
+
         //deo koji dodaje trenutne live igrace koji sede
-        //funkcionalnost koja je potrebna da ne bi dozvolili da jedan isti igrac udje u 2 sobe 
-        br = room.id*10+playerid;
+        br = room.id * 10 + playerid;
         liveplayers[br] = username;
         console.log(`${liveplayers[br]}`);
         console.log('Saljem check');
 
 
-        //emitovanje check radi provere za ovo iznad
-        SocLobby.emit('check',JSON.stringify(username));
-        SocRooms.emit('check',JSON.stringify(username));
+
+        SocLobby.emit('check', JSON.stringify(username));
+        SocRooms.emit('check', JSON.stringify(username));
 
 
         console.log(`${socket.id} se pridruzuje sobi soketa ${room.roomName}`);
         socket.join(room.roomName);
+
+
         const players = room.getPlayers();
         socket.emit('setPlayer', players, room.id, playerid, room, players.length);
         console.log('Saljem za apdejt');
-
-        //update koji se mora odraditi u svim klijentima u sobi gde je igrac seo
         io.of('/game')
-            .to(room.roomName).emit('update', playerid, player.getPlayerUsername());
+            .to(room.roomName).emit('update', playerid, player.getPlayerUsername(), room);
+        io.of('/game')
+            .to(room.roomName).emit('WelcomeMessage', player.getPlayerUsername(), "has joined the game");
         console.log(`Trenutna soba koju saljem ima ${room.igraca} a to je soba${cur_room}`)
-        //update za broj igraca koji su u odredjenim sobama
         io.of('/room')
-            .emit('room',rooms,cur_room);
+            .emit('room', rooms, cur_room);
+
+        socket.on("sendMessage", (username, msg) => {
+
+            io.of('/game').to(room.roomName).emit("getMessage", username, msg);
+
+        });
 
 
-        //pocetak igre za igrace
-        socket.on('startGame', (brRundi) => {
+
+        socket.on('startGame', (brRundi, room) => {
             brojRundi = brRundi;
             console.log(`Treba da bude odigrano ${brRundi}`);
 
@@ -183,18 +281,19 @@ SocGames.on('connection', socket => {
             randomChar = karakteri[Math.floor(Math.random() * karakteri.length)];
             timer = new Timer(480000);
             console.log(`${timer.format()}`);
-
+            brZavrsenih = 0;
             for (p of players) {
-                console.log(`${room.id}`);
+
                 io.of('/game')
-                    .to(p.socketId).emit('starting', p, randomChar, timer, geos);
+                    .to(p.socketId).emit('starting', p, randomChar, timer, geos, brZavrsenih, brojRundi);
+
                 console.log('Igra pocinje  za igraca ' + `${p.username}`);
             }
 
         });
 
-        //brojanje poena igraca
-        socket.on('calculatePoints', ({ dataVal, plId, randChar1 }) => {
+
+        socket.on('calculatePoints', ({ dataVal, plId, randChar1, idroom }) => {
             console.log(`ja sam igrac ${plId}`);
 
             brPoslatih++;
@@ -213,10 +312,10 @@ SocGames.on('connection', socket => {
                 timer1 = new Timer(60000)
                 console.log(`${timer1.format()}`);
                 io.of('/game')
-                    .to(room.roomName).emit('hurryUp', timer1);
+                    .to(room.roomName).emit('hurryUp', timer1, rooms[idroom].igraca);
 
             }
-            if (brPoslatih === 4) {
+            if (brPoslatih === rooms[idroom].igraca) {
                 brZavrsenih++;
                 for (i = 0; i < 4; i++) {
                     console.log(`${i+1}.igrac ${players[i].username}`);
@@ -296,17 +395,30 @@ SocGames.on('connection', socket => {
                 }
                 if (brZavrsenih < brojRundi) {
                     randomChar = karakteri[Math.floor(Math.random() * karakteri.length)].toUpperCase();
+                    io.of('/game')
+                        .to(room.roomName).emit('NumOfPoints', players);
                     for (p of players) {
                         p.drzavaChecked = false;
                         p.gradChecked = false;
                         p.rekaChecked = false;
                         p.planinaChecked = false;
                         console.log(`${room.id}`);
-                        io.of('/game')
-                            .to(p.socketId).emit('starting', p, randomChar, timer);
-                        console.log('Nova runda pocinje za igraca ' + `${p.username}`);
+                        brPoslatih = 0;
+
+
+
+
+                        io.of('/game').to(p.socketId).emit('starting', p, randomChar, timer, geos, brZavrsenih, brojRundi);
+
+
+
+
                     }
 
+
+
+                } else {
+                    io.of('/game').to(room.roomName).emit('endGame');
                 }
 
             }
@@ -316,46 +428,10 @@ SocGames.on('connection', socket => {
         });
 
     });
-    //handler za izlazak iz sobe 
-    socket.on('disconnect', () => {
-
-        //console.log(`${socket.id} is leaving room ${room.roomName}`);
-        console.log(`leaving  ${room.id} `);
-        console.log(`${room.roomName}`);
-        var leaverid = room.findLeaver(socket.id);
-        
-        room.standUp(leaverid);
-        
-        br = room.id*10+leaverid;
-        liveplayers[br] = "none";
-        del_room = -1;
-        //brisanje igraca
-        //if(room.igraca === 0){
-          //  console.log(`Brisem sobu ${room.id}`);
-            //rooms[room.id] = undefined;
-            //del_room = room.id;
-            //
-        //}
-        
-        socket.leave();
-        console.log(`${leaverid}`);
-        io.of('/game')
-            .to(room.roomName).emit('update', leaverid, 'none');
-        io.of('/room')
-            .emit('updateRoom',rooms,del_room);
-        
-    });
-
-
 });
 
-
-
-
-
-
-
+server.listen(port);
 
 server.once('listening', function() {
     console.log(`Server started on http://localhost:${port}/login`);
-});
+})
