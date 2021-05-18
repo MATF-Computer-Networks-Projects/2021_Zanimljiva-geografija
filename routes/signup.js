@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk';
+
+
+
 mongoose.connect('mongodb://localhost:27017/login-app-db', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
