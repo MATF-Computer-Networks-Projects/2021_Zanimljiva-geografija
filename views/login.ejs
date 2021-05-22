@@ -13,26 +13,40 @@
 
 <body>
     <main>
-        <header>Zanimljiva geografija</header>
+        <header class="naslov">
+            <div style="display: inline-block">
+                <h1>Zanimljiva geografija</h1>
+                <img src="/img/svet.png" style="height: 55px;width: 55px;">
+            </div>
+        </header>
         <form action="game" method="get">
 
-            <div class="form-group">
-                <div class="form-group">
-                    <div>
-                        Prijavi se
-                    </div>
-                    <input type="text" id="username" name="username" placeholder="Username" autocomplete=off/>
-                </div>
+            <div class="form-group" style="margin-top:45px;">
                 <div>
-                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" />
+                    <h3>Prijavi se</h2>
                 </div>
-                <div>
-                    <button type="button" id="log" class="btn btn-outline-success btn-lg">Uloguj se</button>
-                </div>
-                <div>
-                    Nemaš nalog?
-                    <button type="button" id="register" class="btn btn-outline-success btn-lg">Registruj se</button>
-                </div>
+                <input type="text" id="username" name="username" placeholder="Username" autocomplete=off style="width: 80%;
+                height: 50px;
+                padding: 20px;
+                margin: 8px;
+                font-size: 25px;
+                box-sizing: border-box;" />
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" style="width: 80%;
+                height: 50px;
+                padding: 20px;
+                margin: 8px;
+                font-size: 25px;
+                box-sizing: border-box;" />
+            </div>
+            <div>
+                <button type="button" id="log" class="btn btn-outline-success btn-lg" style="width: 55%;">Uloguj se</button>
+            </div>
+            <div style="display: inline">
+                <p style="text-align: left; margin-left: -20px;">Nemaš nalog?</p>
+                <button type="button" id="register" class="btn btn-outline-success btn-lg" style="width: 55%;">Registruj se</button>
+            </div>
         </form>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js" integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ==" crossorigin="anonymous"></script>

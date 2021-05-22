@@ -10,6 +10,9 @@ Igra sadrži četiri igrača i tri runde, i nakon što se započne runda, igrač
 ## Programski jezici i tehnologije
 
 Projekat je rađen u programskom jeziku JavaScript, korišćenjem Node.js radnog okvira za razvoj serverskih aplikacija, te biblioteka express, socket.io i mongoose.
+Da biste pokrenuli program, neophodno je instalirati Node.js preko linka https://nodejs.org/en/download/. 
 
 ## Pokretanje programa
+
+ 
 

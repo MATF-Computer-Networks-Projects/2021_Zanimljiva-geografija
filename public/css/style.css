@@ -1,19 +1,26 @@
 main {
-    max-width: 500px;
-    background-color: darkgreen;
-    padding: 2%;
-    margin: 80px auto;
+    position: absolute;
     text-align: center;
+    margin-left: 40%;
+    margin-top: 15%;
+    background-color: rgb(28, 103, 165);
+    padding: 2%;
 }
 
 .main1 {
     padding-top: 0px !important;
     margin-top: 30px !important;
     max-width: 2000px;
-    background-color: darkgreen;
+    background-color: rgb(28, 103, 165);
     padding: 2%;
     margin: 50px auto;
     text-align: left;
+}
+
+#naslov {
+    background-color: rgb(28, 103, 165);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .column1 {
@@ -57,7 +64,7 @@ h1#slovo {
 }
 
 body {
-    background-color: darkslategray;
+    background-color: lightsteelblue;
     color: floralwhite;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -183,18 +190,18 @@ a:hover {
 #usermsg {
     flex: 1;
     border-radius: 4px;
-    border: 1px solid #ff9800;
+    border: 1px solid green;
 }
 
 #name {
     border-radius: 4px;
-    border: 1px solid #ff9800;
+    border: 1px solid green;
     padding: 2px 8px;
 }
 
 #submitmsg,
 #enter {
-    background: #ff9800;
+    background: green;
     border: 2px solid #e65100;
     color: white;
     padding: 4px 10px;
