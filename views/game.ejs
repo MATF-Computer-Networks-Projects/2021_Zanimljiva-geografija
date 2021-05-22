@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/socket.io/socket.io.js"></script>
@@ -38,25 +40,25 @@
                                 <tr>
                                     <th>Drzava</th>
                                     <th id="drzava0">
-                                        <input id="drzavaInput0" readonly>
+                                        <input id="drzavaInput0" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Grad</th>
                                     <th id="grad0">
-                                        <input id="gradInput0" readonly>
+                                        <input id="gradInput0" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Reka</th>
                                     <th id="reka0">
-                                        <input id="rekaInput0" readonly>
+                                        <input id="rekaInput0" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Planina</th>
                                     <th id="planina0">
-                                        <input id="planinaInput0" readonly>
+                                        <input id="planinaInput0" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                             </table>
@@ -76,25 +78,25 @@
                                 <tr>
                                     <th>Drzava</th>
                                     <th id="drzava1">
-                                        <input id="drzavaInput1" readonly>
+                                        <input id="drzavaInput1" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Grad</th>
                                     <th id="grad1">
-                                        <input id="gradInput1" readonly>
+                                        <input id="gradInput1" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Reka</th>
                                     <th id="reka1">
-                                        <input id="rekaInput1" readonly>
+                                        <input id="rekaInput1" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Planina</th>
                                     <th id="planina1">
-                                        <input id="planinaInput1" readonly>
+                                        <input id="planinaInput1" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                             </table>
@@ -117,25 +119,25 @@
                                 <tr>
                                     <th>Drzava</th>
                                     <th id="drzava2">
-                                        <input id="drzavaInput2" readonly>
+                                        <input id="drzavaInput2" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Grad</th>
                                     <th id="grad2">
-                                        <input id="gradInput2" readonly>
+                                        <input id="gradInput2" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Reka</th>
                                     <th id="reka2">
-                                        <input id="rekaInput2" readonly>
+                                        <input id="rekaInput2" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Planina</th>
                                     <th id="planina2">
-                                        <input id="planinaInput2" readonly>
+                                        <input id="planinaInput2" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                             </table>
@@ -155,25 +157,25 @@
                                 <tr>
                                     <th>Drzava</th>
                                     <th id="drzava3">
-                                        <input id="drzavaInput3" readonly>
+                                        <input id="drzavaInput3" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Grad</th>
                                     <th id="grad3">
-                                        <input id="gradInput3" readonly>
+                                        <input id="gradInput3" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Reka</th>
                                     <th id="reka3">
-                                        <input id="rekaInput3" readonly>
+                                        <input id="rekaInput3" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th>Planina</th>
                                     <th id="planina3">
-                                        <input id="planinaInput3" readonly>
+                                        <input id="planinaInput3" readonly style="width: 100%;">
                                     </th>
                                 </tr>
                             </table>
@@ -188,8 +190,15 @@
             </div>
             <div class="column2">
                 <div id="wrapper">
-                    <div id="menu">
-                        <p class="welcome">Zanimljva geografija</p>
+                    <div id="menu" style="text-align: center;">
+                        <p class="welcome" style="text-align: center;">
+                            <header class="naslov">
+                                <div style="display: inline-block ; text-align: center;">
+                                    <h3 style="text-align: center;">Zanimljiva geografija</h3>
+                                    <img src="/img/svet.png" style="height: 25px;width: 25px;">
+                                </div>
+                            </header>
+                        </p>
                     </div>
 
                     <div id="chatbox"></div>

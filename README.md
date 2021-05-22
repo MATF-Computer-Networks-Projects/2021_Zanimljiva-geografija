@@ -9,10 +9,11 @@ Igra sadrži četiri igrača i tri runde, i nakon što se započne runda, igrač
 
 ## Programski jezici i tehnologije
 
-Projekat je rađen u programskom jeziku JavaScript, korišćenjem Node.js radnog okvira za razvoj serverskih aplikacija, te biblioteka express, socket.io i mongoose.
-Da biste pokrenuli program, neophodno je instalirati Node.js preko linka https://nodejs.org/en/download/. 
+Projekat je rađen u programskom jeziku JavaScript, korišćenjem Node.js radnog okvira za razvoj serverskog dela aplikacije, za bazu podataka je korišćen MongoDB ,dok se za korišćenje WebSocket-a koristila biblioteka socket.io. Takođe su korišćene biblioteke express, mongoose. 
 
 ## Pokretanje programa
+
+Da biste pokrenuli program, neophodno je instalirati Node.js preko linka https://nodejs.org/en/download/. Zatim, potrebno je preko terminala klonirati projekat preko git clone url_projekta (potrebno je da bude instaliran git na računaru). Nakon pozicioniranja u direktorijum projekta, potrebno je pokrenuti npm start, i onda se aplikacija pokrece na localhost serveru na 3000 portu, tacnije na adresi localhost:3000/login.
 
  
 

@@ -73,7 +73,7 @@ socket.on('room', (rooms, cur_room) => {
                 console.log(`${soba.igraca}`);
                 var inner = 'Soba ' + j + ' ' + soba.igraca + '/4';
                 if (soba.igraca !== 4) {
-                    inner += '<button type="button" id="buton' + j + '" >Pridruzi se</button>';
+                    inner += '<button type="button" id="buton' + j + '" style="color:green;border: 2px solid green;"  >Pridruzi se</button>';
                 }
 
                 if (boxj === null) {

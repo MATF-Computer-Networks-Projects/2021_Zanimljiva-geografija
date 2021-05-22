@@ -5,7 +5,7 @@ const {
 
 });
 const ime = document.getElementById("here");
-ime.innerHTML = `${username}`;
+
 
 const socket = io("http://localhost:3000/lobby");
 

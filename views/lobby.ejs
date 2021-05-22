@@ -13,17 +13,24 @@
 
 <body>
     <main>
-        <header>Lobby</header>
-        <form action="game" method="get">
-
+        <header class="naslov">
+            <div style="display: inline-block">
+                <h1>Zanimljiva geografija</h1>
+                <img src="/img/svet.png" style="height: 55px;width: 55px;">
+            </div>
+        </header>
+        <form action="game" method="get" style="margin-top: 20px;">
+            <h1> <b>Lobby</b> </h1>
             <div class="form-group">
                 <div class="form-group">
                     <p id="here"></p>
                     <div>
-                        <button type="button" id="rand" class="btn btn-outline-success btn-lg">Pridruži se nasumicnoj igri</button>
+                        <button type="button" id="rand" class="btn btn-outline-success btn-lg" style="padding: 20px;
+                        margin: 8px;">Pridruži se nasumicnoj igri</button>
                     </div>
                     <div>
-                        <button type="button" id="search" class="btn btn-outline-success btn-lg">Pretrazi sobe</button>
+                        <button type="button" id="search" class="btn btn-outline-success btn-lg" style="padding: 20px;
+                        margin: 8px;">Pretrazi sobe</button>
                     </div>
         </form>
     </main>

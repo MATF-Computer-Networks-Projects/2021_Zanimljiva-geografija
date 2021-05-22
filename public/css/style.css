@@ -1,19 +1,18 @@
 main {
     position: absolute;
     text-align: center;
-    margin-left: 40%;
-    margin-top: 15%;
+    margin-left: 35%;
+    margin-top: 10%;
     background-color: rgb(28, 103, 165);
     padding: 2%;
 }
 
 .main1 {
-    padding-top: 0px !important;
-    margin-top: 30px !important;
-    max-width: 2000px;
+    margin-top: 30px;
+    margin-left: 10%;
+    /*max-width: 2000px;*/
     background-color: rgb(28, 103, 165);
     padding: 2%;
-    margin: 50px auto;
     text-align: left;
 }
 
@@ -171,6 +170,11 @@ a:hover {
     padding: 15px 25px;
     font-size: 1.4rem;
     font-weight: bold;
+}
+
+#butid {
+    color: green;
+    border: 2px solid green;
 }
 
 #chatbox {

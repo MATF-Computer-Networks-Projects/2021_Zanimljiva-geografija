@@ -13,20 +13,38 @@
 
 <body>
     <main>
-        <header>Registracija</header>
+        <header class="naslov">
+            <div style="display: inline-block">
+                <h1>Zanimljiva geografija</h1>
+                <img src="/img/svet.png" style="height: 55px;width: 55px;">
+            </div>
+        </header>
         <form action="game" method="get">
 
-            <div class="form-group">
-                <div class="form-group">
 
-                    <input type="text" id="username" name="username" placeholder="Username" autocomplete=off/>
-                </div>
+            <div class="form-group">
                 <div>
-                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" />
+                    <h3>Registruj se</h2>
                 </div>
-                <div>
-                    <button type="button" id="submit" class="btn btn-outline-success btn-lg">Submit</button>
-                </div>
+
+                <input type="text" id="username" name="username" placeholder="Username" autocomplete=off style="width: 80%;
+                height: 50px;
+                padding: 20px;
+                margin: 8px;
+                font-size: 25px;
+                box-sizing: border-box;" />
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" style="width: 80%;
+                height: 50px;
+                padding: 20px;
+                margin: 8px;
+                font-size: 25px;
+                box-sizing: border-box;" />
+            </div>
+            <div>
+                <button type="button" id="submit" class="btn btn-outline-success btn-lg">Submit</button>
+            </div>
         </form>
     </main>
     <script src="/socket.io/socket.io.js"></script>
