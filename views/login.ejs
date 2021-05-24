@@ -80,13 +80,13 @@
                 if (result.status === 'ok') {
                     console.log('Got the token: ', result.data)
                     localStorage.setItem('token', result.data)
-                        //alert('Bravo mala')
+                        
                     socket.emit('logTry', username);
                     socket.on('allowance', (indik) => {
                         console.log(indik);
                         if (indik === 1) {
                             location.href = "http://localhost:3000/lobby/?username=" + `${username}`;
-                            //console.log('Odoh u lobi');
+                            
                         } else {
                             alert('Vec si u sobi druze');
                             location.reload();

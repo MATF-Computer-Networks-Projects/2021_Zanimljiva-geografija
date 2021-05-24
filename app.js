@@ -41,17 +41,17 @@ app.post('/api/register', async(req, res) => {
     const { username, password: plainTextPassword } = req.body
 
     if (!username || typeof username !== 'string') {
-        return res.json({ status: 'error', error: 'Invalid username' })
+        return res.json({ status: 'error', error: 'Neispravno korisnicko ime' })
     }
 
     if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-        return res.json({ status: 'error', error: 'Invalid password' })
+        return res.json({ status: 'error', error: 'Neispravna lozinka' })
     }
 
     if (plainTextPassword.length < 5) {
         return res.json({
             status: 'error',
-            error: 'Password too small. Should be atleast 6 characters'
+            error: 'Sifra nedovoljno dugacka. Mora se sastojati od bar 6 karaktera.'
         })
     }
 
@@ -62,11 +62,11 @@ app.post('/api/register', async(req, res) => {
             username,
             password
         })
-        console.log('User created successfully: ', response)
+        console.log('Korisnik je uspresno ubacen u bazu: ', response)
     } catch (error) {
         if (error.code === 11000) {
-            // duplicate key
-            return res.json({ status: 'error', error: 'Username already in use' })
+            
+            return res.json({ status: 'error', error: 'Postoji korisnik sa takvim korisnickim imenom.' })
         }
         throw error
     }
@@ -78,12 +78,11 @@ app.post('/api/login', async(req, res) => {
     const user = await User.findOne({ username }).lean()
 
     if (!user) {
-        return res.json({ status: 'error', error: 'Invalid username/password' })
+        return res.json({ status: 'error', error: 'Neispravno korisnicko ime/lozinka' })
     }
 
     if (await bcrypt.compare(password, user.password)) {
-        // the username, password combination is successful
-
+        
         const token = jwt.sign({
                 id: user._id,
                 username: user.username
@@ -94,7 +93,7 @@ app.post('/api/login', async(req, res) => {
         return res.json({ status: 'ok', data: token })
     }
 
-    res.json({ status: 'error', error: 'Invalid username/password' })
+    res.json({ status: 'error', error: 'Neispravno korisnicko ime/lozinka' })
 })
 
 
