@@ -27,7 +27,21 @@ main {
     width: 65%;
     padding: 10px;
 }
-
+@media(max-width:570px){
+    .column1 {
+        width:30px;
+    }
+    .main1{
+        margin-left:0;
+    }
+    h1#slovo{
+        margin-left:0 !important;
+        padding-left: 0 !important;
+    }
+    h1#soba , h3#runde, h1#slovo{
+        font-size: 24px !important;
+    }
+}
 .column2 {
     float: left;
     width: 35%;
