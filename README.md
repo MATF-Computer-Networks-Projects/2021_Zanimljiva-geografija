@@ -15,5 +15,10 @@ Projekat je rađen u programskom jeziku JavaScript, korišćenjem Node.js radnog
 
 Da biste pokrenuli program, neophodno je instalirati Node.js preko linka https://nodejs.org/en/download/ kao i MongoDB preko linka https://www.mongodb.com/try/download/community?jmp=docs. Zatim, potrebno je preko terminala klonirati projekat preko git clone url_projekta (potrebno je da bude instaliran git na računaru). Nakon pozicioniranja u direktorijum projekta, potrebno je pokrenuti npm start, i onda se aplikacija pokrece na localhost serveru na 3000 portu, tacnije na adresi localhost:3000/login.
 
- 
+
+## Autori
+
+* Miloš Kutlešić (mr16182@alas.matf.bg.ac.rs)
+* Stevan Dragović (ml16331@alas.matf.bg.ac.rs)
+* Ana Milićević (mr16042@alas.matf.bg.ac.rs)
 
