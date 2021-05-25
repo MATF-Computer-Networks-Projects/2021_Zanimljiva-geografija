@@ -31,7 +31,8 @@ class Player {
     }
     getTotalScore() {
         let totalScore = this.drzavaScore + this.gradScore + this.rekaScore + this.planinaScore;
-        return totalScore;
+        this.totalScore += totalScore;
+        return this.totalScore;
     }
 
     setPlayercurrRoom(idroom) {
